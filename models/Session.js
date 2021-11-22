@@ -10,7 +10,7 @@ const Session = sequelize.define("session", {
     allowNull: false,
   },
   time: {
-    type: DataTypes.TIME,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   hall: {
@@ -20,6 +20,10 @@ const Session = sequelize.define("session", {
   type: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  seats: {
+    type: DataTypes.STRING(400),
+    defaultValue: "[[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false],[false,false,false,false,false,false,false,false,false,false]]"
   }
 });
 Movie.hasMany(Session);

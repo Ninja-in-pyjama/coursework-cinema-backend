@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 const sequelize = require("./models/sequelize");
-const models = require("./models");
+require("./models");
 const routes = require("./routes");
 
 //
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(fileUpload({}));
+app.use(express.static("static"));
 app.use(express.urlencoded({ extended: false }));
 
 routes.forEach(item => {
@@ -27,5 +30,4 @@ const start = async () => {
     console.log(e);
   }
 };
-
 start();

@@ -38,7 +38,7 @@ const genericController = (model) => ({
 
   async update({ body, params: { id } }, res) {
     try {
-      const item = await model.update(body, { where: { id } });
+      await model.update(body, { where: { id } });
       return res.status(200).json({ status: "OK", message: "success update" });
     } catch (e) {
       return res.status(500).json(e);
